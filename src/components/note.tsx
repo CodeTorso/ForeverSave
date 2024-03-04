@@ -67,7 +67,7 @@ export const Note: React.FC<NoteProps> = ({ createExists }) => {
                   Give a title to your save :)
                 </DialogTitle>
                 <DialogDescription className="text-gray-300">
-                  Give name to your post here. Click save when you're done.
+                  Give name to your post here. Click save when you&apos;re done.
                 </DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
