@@ -2,7 +2,7 @@
 
 import mongoose from "mongoose";
 
-mongoose.connect(process.env.DB_MONGO_URI as string);
+mongoose.connect("mongodb+srv://" + process.env.DB_MONGO_URI);
 
 const noteSchema = new mongoose.Schema({
   title: String,
