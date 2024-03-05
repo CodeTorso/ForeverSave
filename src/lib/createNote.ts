@@ -31,14 +31,18 @@ export async function createNote(
 
 export async function TitleExists(title: string): Promise<boolean> {
   return new Promise<boolean>(async (resolve, reject) => {
-    const existingDocument: {
-      title: string;
-      note: string;
-    } | null = await Note.findOne({ title });
-    if (existingDocument) {
+    try {
+      const existingDocument: {
+        title: string;
+        note: string;
+      } | null = await Note.findOne({ title });
+      if (existingDocument) {
+        resolve(false);
+      } else {
+        resolve(true);
+      }
+    } catch (error) {
       resolve(false);
-    } else {
-      resolve(true);
     }
   });
 }
@@ -50,13 +54,21 @@ type Note = {
 
 export async function searchTitleFn(title: string): Promise<Note> {
   return new Promise<Note>(async (resolve, reject) => {
-    const existingDocument: Note | null = await Note.findOne({ title });
-    if (existingDocument) {
-      resolve(existingDocument);
-    } else {
+    try {
+      const existingDocument: Note | null = await Note.findOne({ title });
+      if (existingDocument) {
+        const { title, note } = existingDocument;
+        resolve({ title, note });
+      } else {
+        resolve({
+          title: "",
+          note: "lol! No Note found with that title! But you may create one!",
+        });
+      }
+    } catch (error) {
       resolve({
         title: "",
-        note: "lol! No Note found with that title! But you may create one!",
+        note: "lol! Something wrong! Maybe the note does not exist :/",
       });
     }
   });
