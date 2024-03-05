@@ -1,8 +1,8 @@
 "use server";
 
 import mongoose from "mongoose";
-
-mongoose.connect("mongodb+srv://" + process.env.DB_MONGO_URI);
+const uri = process.env.MONGO_URI || "mongodb://localhost"
+mongoose.connect(uri);
 
 const noteSchema = new mongoose.Schema({
   title: String,
