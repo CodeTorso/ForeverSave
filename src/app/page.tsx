@@ -4,7 +4,7 @@ import { Navbar } from "@/components/navbar";
 
 export default function Home() {
   return (
-    <div className="dark:bg-black h-screen flex-col items-center flex">
+    <div className="dark:bg-black bg-slate-300 h-screen flex-col items-center flex">
       <Navbar />
       <div className="flex flex-col items-center">
         <GridBackgroundDemo />

@@ -1,3 +1,5 @@
+"use state";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,14 +12,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
+import { SelectSearch } from "./searchSelect";
 export function Post() {
   return (
-    <Tabs defaultValue="post" className="w-[400px] flex flex-col items-center">
+    <Tabs
+      defaultValue="post"
+      className="relative -top-20 w-[400px] flex flex-col items-center"
+    >
       <TabsList>
         <TabsTrigger value="post">Post</TabsTrigger>
         <TabsTrigger value="search">Search</TabsTrigger>
-        <TabsTrigger value="random">Random</TabsTrigger>
       </TabsList>
       <TabsContent value="post">
         <Card>
@@ -29,8 +33,13 @@ export function Post() {
           </CardHeader>
           <CardContent className="space-y-2">
             <div className="space-y-1">
-              <Label htmlFor="title">Title</Label>
-              <Input id="title" placeholder="grokisgross" defaultValue="" />
+              {/* Somehow using title or even title form as heading gives error  */}
+              <Label htmlFor="postHeading">Title</Label>
+              <Input
+                id="postHeading"
+                placeholder="grokisgross"
+                defaultValue=""
+              />
             </div>
             <div className="space-y-1">
               <Label htmlFor="post">Post</Label>
@@ -45,48 +54,21 @@ export function Post() {
       <TabsContent value="search">
         <Card>
           <CardHeader>
-            <CardTitle>Account</CardTitle>
+            <CardTitle>Search your thoughts</CardTitle>
             <CardDescription>
-              Make changes to your account here. Click save when you&apos;re
-              done.
+              In the realm of thoughts find the thoughts that mean to you.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
             <div className="space-y-1">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" defaultValue="Pedro Duarte" />
+              <SelectSearch />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" defaultValue="@peduarte" />
+              <Input defaultValue="Select a method" disabled />
             </div>
           </CardContent>
           <CardFooter>
-            <Button>Save changes</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="random">
-        <Card>
-          <CardHeader>
-            <CardTitle>Account</CardTitle>
-            <CardDescription>
-              Make changes to your account here. Click save when you&apos;re
-              done.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" defaultValue="Pedro Duarte" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" defaultValue="@peduarte" />
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Save changes</Button>
+            <Button>Search</Button>
           </CardFooter>
         </Card>
       </TabsContent>
