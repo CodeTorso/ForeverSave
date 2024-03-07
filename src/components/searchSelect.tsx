@@ -15,9 +15,8 @@ export function SelectSearch() {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectItem value="apple">By Title</SelectItem>
-          <SelectItem value="banana">By ID</SelectItem>
-          <SelectItem value="blueberry">By words</SelectItem>
+          <SelectItem value="Who">By Who</SelectItem>
+          <SelectItem value="words">By words</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
